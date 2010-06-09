@@ -12,22 +12,22 @@
 	styleEl.setAttribute('type', "text/css");
 	styleEl.innerText = '#invisibleStatusBar { \
 		display: block; \
-		visibility: hidden; \
-		opacity: 0.95; \
+		opacity: 0; \
 		background: #ccc; \
-		border: 1px solid #999; \
 		-webkit-border-top-right-radius: 0.5em; \
+		-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75); \
 		color: black; \
 		position: fixed; \
 		z-index: 999999999; \
 		padding: 0.5em; \
 		bottom: -1px; \
 		left: -1px; \
-		font: 11px arial; \
+		font: 10px "lucida grande", arial; \
 		max-width: 90%; \
 		white-space: nowrap; \
 		overflow: hidden; \
 		text-overflow: ellipsis; \
+		-webkit-transition: opacity 250ms; \
 	} \
 	#invisibleStatusBar.invisibleStatusBarRight { \
 		left: auto; \
@@ -62,7 +62,7 @@
 	};
 	
 	function hideStatus() {
-		invisibleStatusBar.style.visibility = 'hidden';
+		invisibleStatusBar.style.opacity = '0';
 	};
 	
 	function showStatus(event) {
@@ -90,7 +90,7 @@
 		var h = window.getComputedStyle(document.getElementById('invisibleStatusBar')).height.replace(/px|%/, '')*1;
 		var winH = document.documentElement.clientHeight;
 		invisibleStatusBar.className = ( event.clientX < (w+15) && event.clientY > (winH - (h+15)) ) ? 'invisibleStatusBarRight' : 'invisibleStatusBarLeft';
-		invisibleStatusBar.style.visibility = 'visible';
+		invisibleStatusBar.style.opacity = '0.95';
 	};
 	
 	document.addEventListener('DOMNodeInserted', applyRolloverEvents);
