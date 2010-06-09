@@ -12,6 +12,7 @@
 	styleEl.setAttribute('type', "text/css");
 	styleEl.innerText = '#invisibleStatusBar { \
 		display: block; \
+		visibility: hidden; \
 		opacity: 0; \
 		background: #ccc; \
 		-webkit-border-top-right-radius: 0.5em; \
@@ -44,6 +45,8 @@
 	invisibleStatusBar.id = 'invisibleStatusBar';
 	document.getElementsByTagName('body')[0].appendChild(invisibleStatusBar);
 	
+	var visibilityChangeTimeout;
+	
 	function applyRolloverEvents(event) {
 		 // ignore our own insertion events
 		if ( event && event.relatedNode.id == 'invisibleStatusBar' || document.getElementById('Firebug') ) return;
@@ -63,6 +66,10 @@
 	
 	function hideStatus() {
 		invisibleStatusBar.style.opacity = '0';
+		visibilityChangeTimeout = setTimeout(function() {
+			clearTimeout(visibilityChangeTimeout);
+			invisibleStatusBar.style.visibility = 'hidden';
+		}, 250);
 	};
 	
 	function showStatus(event) {
@@ -90,6 +97,9 @@
 		var h = window.getComputedStyle(document.getElementById('invisibleStatusBar')).height.replace(/px|%/, '')*1;
 		var winH = document.documentElement.clientHeight;
 		invisibleStatusBar.className = ( event.clientX < (w+15) && event.clientY > (winH - (h+15)) ) ? 'invisibleStatusBarRight' : 'invisibleStatusBarLeft';
+		
+		clearTimeout(visibilityChangeTimeout);
+		invisibleStatusBar.style.visibility = 'visible';
 		invisibleStatusBar.style.opacity = '0.95';
 	};
 	
