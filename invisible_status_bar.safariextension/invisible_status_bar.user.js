@@ -103,7 +103,10 @@
 		invisibleStatusBar.style.opacity = '0.95';
 	};
 	
-	document.addEventListener('DOMNodeInserted', applyRolloverEvents);
-	applyRolloverEvents();
+	// if we are not in an iframe
+	if (window.location.href == window.parent.location.href) {
+		document.addEventListener('DOMNodeInserted', applyRolloverEvents);
+		applyRolloverEvents();
+	}
 	
 })();
