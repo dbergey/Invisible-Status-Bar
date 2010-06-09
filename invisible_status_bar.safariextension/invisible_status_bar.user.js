@@ -13,6 +13,9 @@
 	styleEl.innerText = '#invisibleStatusBar { \
 		display: block; \
 		visibility: hidden; \
+		height: auto; \
+		width: auto; \
+		margin: auto; \
 		opacity: 0; \
 		background: #ccc; \
 		-webkit-border-top-right-radius: 0.5em; \
