@@ -93,7 +93,7 @@
 			prefix = prefix.replace(/[^\/]*\/$/, '');
 		}
 	
-		invisibleStatusBar.innerHTML = '<span id="invisibleStatusBarPrefix">'+ prefix +'</span>' + this_href;
+		invisibleStatusBar.innerHTML = '<span id="invisibleStatusBarPrefix">'+ prefix +'</span>' + decodeURI(this_href);
 		
 		// if cursor would be in the way on left
 		var w = window.getComputedStyle(document.getElementById('invisibleStatusBar')).width.replace(/px|%/, '')*1;
