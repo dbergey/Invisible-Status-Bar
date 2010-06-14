@@ -53,7 +53,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://danielbergey.com/software/invisiblestatusbar/updates_safari.plist</string>
+	<string>http://github.com/downloads/dbergey/Invisible-Status-Bar/updates_safari.plist</string>
 	<key>Website</key>
 	<string>http://danielbergey.com/software/invisiblestatusbar/</string>
 </dict>
