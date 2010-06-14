@@ -11,20 +11,32 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.05</string>
+	<string>1.06</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 	<key>Chrome</key>
-	<dict/>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
 	<key>Content</key>
 	<dict>
+		<key>Blacklist</key>
+		<array>
+			<string>http://acid3.acidtests.org/*</string>
+		</array>
 		<key>Scripts</key>
 		<dict>
 			<key>End</key>
 			<array>
-				<string>invisible_status_bar.user.js</string>
+				<string>lib/jquery.min.js</string>
+				<string>injection.js</string>
 			</array>
 		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>invisiblestatusbar.css</string>
+		</array>
 	</dict>
 	<key>Description</key>
 	<string>When you don't want Safari's status bar to show / But you still want to know where your clicks are gonna go</string>

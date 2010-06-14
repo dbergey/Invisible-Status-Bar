@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<string>classic</string>
+		<key>Key</key>
+		<string>theme</string>
+		<key>Title</key>
+		<string>Use Theme</string>
+		<key>Titles</key>
+		<array>
+			<string>Classic</string>
+			<string>Safari</string>
+		</array>
+		<key>Type</key>
+		<string>PopUpButton</string>
+		<key>Values</key>
+		<array>
+			<string>classic</string>
+			<string>safari</string>
+		</array>
+	</dict>
+</array>
+</plist>

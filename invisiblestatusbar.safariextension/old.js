@@ -7,42 +7,10 @@
 // ==/UserScript==
 
 (function() {
-	
-	var styleEl = document.createElement('style');
-	styleEl.setAttribute('type', "text/css");
-	styleEl.innerText = '#invisibleStatusBar { \
-		display: block; \
-		visibility: hidden; \
-		height: auto; \
-		width: auto; \
-		margin: auto; \
-		opacity: 0; \
-		background: #ccc; \
-		-webkit-border-top-right-radius: 0.5em; \
-		-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75); \
-		color: black; \
-		position: fixed; \
-		z-index: 999999999; \
-		padding: 0.5em; \
-		bottom: -1px; \
-		left: -1px; \
-		font: 10px "lucida grande", arial; \
-		max-width: 90%; \
-		white-space: nowrap; \
-		overflow: hidden; \
-		text-overflow: ellipsis; \
-		-webkit-transition: opacity 250ms; \
-	} \
-	#invisibleStatusBar.invisibleStatusBarRight { \
-		left: auto; \
-		right: -1px; \
-		-webkit-border-top-right-radius: 0; \
-		-webkit-border-top-left-radius: 0.5em; \
-	} \
-	#invisibleStatusBarPrefix { \
-		color: rgba(0, 0, 0, 0.6) \
-	}';
-	document.getElementsByTagName('head')[0].appendChild(styleEl);
+
+	console.log(safari.extension);
+	var theme = 'classic';
+	safari.extension.addContentStyleSheetFromURL(safari.extension.baseURI +'themes/'+ theme +'.css');
 	
 	var invisibleStatusBar = document.createElement('div');
 	invisibleStatusBar.id = 'invisibleStatusBar';
