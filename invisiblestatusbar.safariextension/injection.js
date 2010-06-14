@@ -28,9 +28,10 @@ var ISBInjection = (function() {
 			if (window !== window.top) return;
 			
 			// use '<isb>' tag to avoid CSS conflicts/overwriting.
-			isb = document.createElement('isb');
-			document.getElementsByTagName('body')[0].appendChild(isb);
-			
+			document.addEventListener('DOMContentLoaded', function() {
+				isb = document.createElement('isb');
+				document.getElementsByTagName('body')[0].appendChild(isb);
+			});
 		},
 		hideStatus: function() {
 			
