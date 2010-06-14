@@ -24,19 +24,18 @@ var ISBInjection = (function() {
 				ISBInjection[msg.name](msg.message);
 			}, false);
 			
-			// so we don't insert inside frames
-			if (window !== window.top) return;
+			isb = document.createElement('isb');
+			
+			// so we don't insert inside iframes or on pages without a body (i.e. frameset, ew)
+			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
 			// use '<isb>' tag to avoid CSS conflicts/overwriting.
-			document.addEventListener('DOMContentLoaded', function() {
-				isb = document.createElement('isb');
-				document.getElementsByTagName('body')[0].appendChild(isb);
-			});
+			document.getElementsByTagName('body')[0].appendChild(isb);
 		},
 		hideStatus: function() {
 			
-			// so we don't show/hide inside frames
-			if (window !== window.top) return;
+			// so we don't show/hide inside iframes or on pages without a body (i.e. frameset, ew)
+			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
 			isb.style.opacity = '0';
 			visibilityChangeTimeout = setTimeout(function() {
@@ -46,8 +45,8 @@ var ISBInjection = (function() {
 		},
 		showStatus: function(msg) {
 			
-			// so we don't show/hide inside frames
-			if (window !== window.top) return;
+			// so we don't show/hide inside iframes or on pages without a body (i.e. frameset, ew)
+			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
 			// figure out what to do 
 			if ( msg.href.match(/^([a-zA-Z]+:)/) )
