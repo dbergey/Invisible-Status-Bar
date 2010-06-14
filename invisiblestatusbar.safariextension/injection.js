@@ -66,7 +66,7 @@ var ISBInjection = (function() {
 				prefix = prefix.replace(/[^\/]*\/$/, '');
 			}
 			
-			isb.innerHTML = '<isbspan>'+ prefix +'</isbspan>' + decodeURI(this_href);
+			isb.innerHTML = '<isb_span>'+ prefix +'</isb_span>' + decodeURI(this_href);
 			
 			// if cursor would be in the way on left
 			var w = window.getComputedStyle(document.getElementsByTagName('isb')[0]).width.replace(/px|%/, '')*1;
