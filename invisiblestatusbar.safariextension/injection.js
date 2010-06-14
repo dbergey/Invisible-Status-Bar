@@ -1,12 +1,12 @@
-var InvisibleStatusBarInjection = (function() {
+var ISBInjection = (function() {
 	
 	// private
-	var opacityChangeTimeout;
+	var visibilityChangeTimeout;
+	var isb; // element
 	
 	return {
 		init: function() {
-			// use 'statusbar' tag to avoid CSS conflicts/overwriting.
-			$('<statusbar id="invisibleStatusBar"></statusbar>').appendTo('body');
+			// TODO: figure out how to do "live" events w/out using jQuery :D
 			$('a[href]').live('mouseover mouseout', function(e) {
 				safari.self.tab.dispatchMessage(e.type == 'mouseover' ? 'linkOver' : 'linkOff', {
 					href: this.getAttribute('href'),
@@ -19,24 +19,33 @@ var InvisibleStatusBarInjection = (function() {
 				});
 			});
 			
-			safari.self.addEventListener("message", $.proxy(function(msg) {
-				this[msg.name](msg.message);
-			}, this), false);
+			// bind message listener
+			safari.self.addEventListener("message", function(msg) {
+				ISBInjection[msg.name](msg.message);
+			}, false);
+			
+			// so we don't insert inside frames
+			if (window !== window.top) return;
+			
+			// use '<isb>' tag to avoid CSS conflicts/overwriting.
+			isb = document.createElement('isb');
+			document.getElementsByTagName('body')[0].appendChild(isb);
+			
 		},
 		hideStatus: function() {
 			
-			// so we don't show inside frames
+			// so we don't show/hide inside frames
 			if (window !== window.top) return;
 			
-			invisibleStatusBar.style.opacity = '0';
-			opacityChangeTimeout = setTimeout(function() {
-				clearTimeout(opacityChangeTimeout);
-				invisibleStatusBar.style.visibility = 'hidden';
+			isb.style.opacity = '0';
+			visibilityChangeTimeout = setTimeout(function() {
+				clearTimeout(visibilityChangeTimeout);
+				isb.style.visibility = 'hidden';
 			}, 250);
 		},
 		showStatus: function(msg) {
 			
-			// so we don't show inside frames
+			// so we don't show/hide inside frames
 			if (window !== window.top) return;
 			
 			// figure out what to do 
@@ -56,20 +65,22 @@ var InvisibleStatusBarInjection = (function() {
 				prefix = prefix.replace(/[^\/]*\/$/, '');
 			}
 			
-			invisibleStatusBar.innerHTML = '<span id="invisibleStatusBarPrefix">'+ prefix +'</span>' + decodeURI(this_href);
+			isb.innerHTML = '<isbspan>'+ prefix +'</isbspan>' + decodeURI(this_href);
 			
 			// if cursor would be in the way on left
-			var w = window.getComputedStyle(document.getElementById('invisibleStatusBar')).width.replace(/px|%/, '')*1;
-			var h = window.getComputedStyle(document.getElementById('invisibleStatusBar')).height.replace(/px|%/, '')*1;
+			var w = window.getComputedStyle(document.getElementsByTagName('isb')[0]).width.replace(/px|%/, '')*1;
+			var h = window.getComputedStyle(document.getElementsByTagName('isb')[0]).height.replace(/px|%/, '')*1;
 			var winH = document.documentElement.clientHeight;
-			invisibleStatusBar.className = ( msg.clientX < (w+15) && msg.clientY > (winH - (h+15)) ) ? 'invisibleStatusBarRight' : 'invisibleStatusBarLeft';
 			
-			clearTimeout(opacityChangeTimeout);
-			invisibleStatusBar.style.visibility = 'visible';
-			invisibleStatusBar.style.opacity = '1';
+			isb.setAttribute('side', ( msg.clientX < (w+15) && msg.clientY > (winH - (h+15)) ) ? 'right' : 'left');
+			isb.setAttribute('theme', msg.theme);
+			
+			clearTimeout(visibilityChangeTimeout);
+			isb.style.visibility = 'visible';
+			isb.style.opacity = '1';
 		}
 		
 		
 	};
 })();
-InvisibleStatusBarInjection.init();
+ISBInjection.init();

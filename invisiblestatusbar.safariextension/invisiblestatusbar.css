@@ -1,6 +1,8 @@
-#invisibleStatusBar {
+/* ---- Global styles ---- */
+isb {
 	display: block;
 	bottom: 0;
+	right: 0;
 	left: 0;
 	visibility: hidden;
 	opacity: 0;
@@ -14,10 +16,68 @@
 	text-overflow: ellipsis;
 	-webkit-transition: opacity 250ms;
 }
-#invisibleStatusBar.invisibleStatusBarRight {
+isb[side=right] {
 	left: auto;
-	right: 0;
 }
-#invisibleStatusBarPrefix {
+isb[side=left] {
+	right: auto;
+}
+isb isb_span {
 	opacity: 0.6;
+}
+
+/* ---- Classic Theme ---- */
+
+isb[theme=classic] {
+	padding: 0.5em !important;
+	bottom: -1px;
+	left: -1px;
+	right: -1px;
+	font: 10px "lucida grande", arial;
+	background: #ccc;
+	-webkit-border-top-right-radius: 0.5em;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
+}
+isb[theme=classic][side=right] {
+	left: auto;
+	-webkit-border-top-right-radius: 0;
+}
+isb[theme=classic][side=left] {
+	right: auto;
+	-webkit-border-top-left-radius: 0;
+}
+isb[theme=classic] isb_span {
+}
+
+
+/* ---- Safari Theme ---- */
+
+isb[theme=safari] {
+	padding: 1px 12px !important;
+	font: 10px/13px "lucida grande";
+	background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#aaa));
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	outline: 1px solid rgba(0, 0, 0, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Chrome Theme ---- */
+
+isb[theme=chrome] {
+	padding: 2px 4px 3px !important;
+	font: 11px/11px "lucida grande";
+	background: #eee;
+	border: 1px solid #aaa;
+	width: 32%;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+}
+isb[theme=chrome][side=right] {
+	left: auto;
+	-webkit-border-top-right-radius: 0;
+}
+isb[theme=chrome][side=left] {
+	right: auto;
+	-webkit-border-top-left-radius: 0;
 }

@@ -1,42 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="lib/jquery.min.js"></script>
-<script>
-	var InvisibleStatusBarGlobal = (function() {
-		return {
-			init: function() {
-				console.log('Starting InvisibleStatusBar global page.');
-			
-				console.log('Binding events.');
-				safari.application.addEventListener('message', $.proxy(function(msg) {
-					console.log('recieved message', msg);
-					this[msg.name](msg.message);
-				}, this), false);
-			
-				// apply chosen theme
-				var themeName = safari.extension.settings.getItem('theme');
-				console.log('Applying %s theme to InvisibleStatusBar.', themeName);
-				safari.extension.addContentStyleSheetFromURL(safari.extension.baseURI +'themes/'+ themeName +'.css');
-				
-				console.log('Finished starting InvisibleStatusBar global page.');
-			},
-			linkOff: function(data) {
-				// only send to parent object somehow
-				console.log('hide', data);
-				safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('hideStatus', data);
-			},
-			linkOver: function(data) {
-				// only send to parent object somehow
-				console.log('show', data);
-				safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('showStatus', data);
-			}
-		};
-	})();
-	InvisibleStatusBarGlobal.init();
-</script>
-</head>
-<body>
-	Move along.
-</body>
+	<head>
+		<script src="global.js"></script>
+	</head>
+	<body>
+		Move along.
+	</body>
 </html>

@@ -13,6 +13,7 @@
 		<array>
 			<string>Classic</string>
 			<string>Safari</string>
+			<string>Chrome</string>
 		</array>
 		<key>Type</key>
 		<string>PopUpButton</string>
@@ -20,6 +21,7 @@
 		<array>
 			<string>classic</string>
 			<string>safari</string>
+			<string>chrome</string>
 		</array>
 	</dict>
 </array>
