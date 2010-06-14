@@ -27,7 +27,7 @@
 		</array>
 		<key>Scripts</key>
 		<dict>
-			<key>End</key>
+			<key>Start</key>
 			<array>
 				<string>lib/jquery.min.js</string>
 				<string>injection.js</string>

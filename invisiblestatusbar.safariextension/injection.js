@@ -66,7 +66,7 @@ var InvisibleStatusBarInjection = (function() {
 			
 			clearTimeout(opacityChangeTimeout);
 			invisibleStatusBar.style.visibility = 'visible';
-			invisibleStatusBar.style.opacity = '0.95';
+			invisibleStatusBar.style.opacity = '1';
 		}
 		
 		
