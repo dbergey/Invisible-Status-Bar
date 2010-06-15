@@ -14,6 +14,7 @@
 			<string>Classic</string>
 			<string>Safari</string>
 			<string>Chrome</string>
+			<string>Dock</string>
 		</array>
 		<key>Type</key>
 		<string>PopUpButton</string>
@@ -22,6 +23,7 @@
 			<string>classic</string>
 			<string>safari</string>
 			<string>chrome</string>
+			<string>dock</string>
 		</array>
 	</dict>
 </array>

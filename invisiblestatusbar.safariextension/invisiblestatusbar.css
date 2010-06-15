@@ -23,7 +23,7 @@ isb[side=left] {
 	right: auto;
 }
 isb isb_span {
-	opacity: 0.6;
+	color: rgba(0, 0, 0, 0.6);
 }
 
 /* ---- Classic Theme ---- */
@@ -80,4 +80,34 @@ isb[theme=chrome][side=right] {
 isb[theme=chrome][side=left] {
 	right: auto;
 	-webkit-border-top-left-radius: 0;
+}
+
+/* ---- Dock Theme ---- */
+
+isb[theme=dock] {
+	padding: 8px !important;
+	bottom: -2px;
+	left: -2px;
+	right: -2px;
+	font: 11px "lucida grande", arial;
+	background: rgba(0, 0, 0, 0.75);
+	border: 2px solid rgba(255, 255, 255, 0.75);
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
+	color: white !important;
+}
+
+isb[theme=dock][side=right] {
+	left: auto;
+	-webkit-border-top-right-radius: 0;
+/*	color: white !important;*/
+}
+isb[theme=dock][side=left] {
+	right: auto;
+	-webkit-border-top-left-radius: 0;
+/*	color: white !important;*/
+}
+isb[theme=dock] isb_span {
+	color: rgba(255, 255, 255, 0.6) !important;
 }
