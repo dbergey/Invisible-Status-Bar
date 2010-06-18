@@ -31,9 +31,9 @@ isb isb_span {
 
 isb[theme=classic] {
 	padding: 0.5em !important;
-	bottom: -1px;
-	left: -1px;
-	right: -1px;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	font: 10px "lucida grande", arial;
 	background: #ccc;
 	-webkit-border-top-right-radius: 0.5em;
@@ -70,16 +70,19 @@ isb[theme=chrome] {
 	font: 11px/11px "lucida grande";
 	background: #eee;
 	border: 1px solid #aaa;
+	border-bottom-width: 0;
 	width: 32%;
 	-webkit-border-top-right-radius: 4px;
 	-webkit-border-top-left-radius: 4px;
 }
 isb[theme=chrome][side=right] {
 	left: auto;
+	border-right-width: 0;
 	-webkit-border-top-right-radius: 0;
 }
 isb[theme=chrome][side=left] {
 	right: auto;
+	border-left-width: 0;
 	-webkit-border-top-left-radius: 0;
 }
 
@@ -93,6 +96,7 @@ isb[theme=dock] {
 	font: 11px "lucida grande", arial;
 	background: rgba(0, 0, 0, 0.75);
 	border: 2px solid rgba(255, 255, 255, 0.75);
+	border-bottom-width: 0;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-top-left-radius: 8px;
 	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
@@ -101,13 +105,13 @@ isb[theme=dock] {
 
 isb[theme=dock][side=right] {
 	left: auto;
+	border-right-width: 0;
 	-webkit-border-top-right-radius: 0;
-/*	color: white !important;*/
 }
 isb[theme=dock][side=left] {
 	right: auto;
+	border-left-width: 0;
 	-webkit-border-top-left-radius: 0;
-/*	color: white !important;*/
 }
 isb[theme=dock] isb_span {
 	color: rgba(255, 255, 255, 0.6) !important;
