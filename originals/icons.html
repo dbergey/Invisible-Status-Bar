@@ -75,6 +75,7 @@ p {
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script>
 $(function() {
+	$('box:first').clone().css({ zoom: 1.56, width: 60, height: 60 }).insertAfter('box:last');
 	$('box:first').clone().css({ zoom: 1, width: 60, height: 60 }).insertAfter('box:last');
 	$('box:first').clone().css({ zoom: 0.75, width: 59, height: 59 }).insertAfter('box:last');
 	$('box:first').clone().css({ zoom: 0.5, width: 57, height: 57 }).insertAfter('box:last');
