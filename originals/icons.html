@@ -1,0 +1,92 @@
+<style>
+box {
+	width: 60px;
+	height: 60px;
+	background: #333;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	-webkit-border-radius: 10px;
+	zoom: 2;
+	margin-bottom: 5px;
+/*	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);*/
+}
+shine {
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 50%;
+	top: 0;
+	-webkit-border-radius: 31px 10px;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.25)));
+}
+box_border {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 1px;
+	height: 50%;
+	border: 1px solid transparent;
+	border-top-color: rgba(255, 255, 255, 0.25);
+	z-index: 10;
+	-webkit-border-radius: 10px;
+}
+box_inner {
+	display: block;
+	overflow: hidden;
+	margin: 1px;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.75)), color-stop(0.5, rgba(255, 255, 255, 0.25)), to(rgba(255, 255, 255, 0.45)));
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	-webkit-border-radius: 9px;
+	position: absolute;
+	z-index: 2;
+}
+bar {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	background: #ccc;
+	display: inline-block;
+	width: 72%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font: 5px lucida grande;
+	padding: 2px 3px 2px 6px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 9px;
+/*	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);*/
+	z-index: 1;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	color: black;
+}
+p {
+	font: 3px lucida grande;
+	color: #eee;
+	margin: 7px 7px -3px 7px;
+	text-align: justify;
+}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(function() {
+	$('box:first').clone().css({ zoom: 1, width: 60, height: 60 }).insertAfter('box:last');
+	$('box:first').clone().css({ zoom: 0.75, width: 59, height: 59 }).insertAfter('box:last');
+	$('box:first').clone().css({ zoom: 0.5, width: 57, height: 57 }).insertAfter('box:last');
+});
+</script>
+
+
+<box>
+	<box_border></box_border>
+	<box_inner><shine></shine></box_inner>
+	<p>Save display space or appeal to your own sense of minimalism by hiding Safari's native status bar, and using the Invisible Status Bar instead. Only shows up when you hover over a link, i.e. when you need a status bar.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<bar>http://example.com</bar>
+</box>

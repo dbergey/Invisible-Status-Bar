@@ -30,6 +30,7 @@ Future Plans
 Version History
 ---------------
 
+- 1.16 - Icons!
 - 1.15 - Fixed a couple of CSS issues with specific sites (Twitter, for onw). Also now smoother scrolling when not visible.
 - 1.14 - Added Dock theme.
 - 1.13 - No errors on pages without BODY tags (FRAMESET, etc.).
