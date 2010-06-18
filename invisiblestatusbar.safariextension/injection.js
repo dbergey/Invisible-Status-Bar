@@ -41,6 +41,7 @@ var ISBInjection = (function() {
 			visibilityChangeTimeout = setTimeout(function() {
 				clearTimeout(visibilityChangeTimeout);
 				isb.style.visibility = 'hidden';
+				isb.style.position = 'absolute';
 			}, 250);
 		},
 		showStatus: function(msg) {
@@ -77,6 +78,7 @@ var ISBInjection = (function() {
 			
 			clearTimeout(visibilityChangeTimeout);
 			isb.style.visibility = 'visible';
+			isb.style.position = 'fixed';
 			isb.style.opacity = '1';
 		}
 		
