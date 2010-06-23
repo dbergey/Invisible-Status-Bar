@@ -49,22 +49,9 @@ var ISBInjection = (function() {
 			// so we don't show/hide inside iframes or on pages without a body (i.e. frameset, ew)
 			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
-			// figure out what to do 
-			if ( msg.href.match(/^([a-zA-Z]+:)/) )
-				var prefix = '';
-			else if ( msg.href.match(/^\//) )
-				var prefix = location.protocol +'//'+ location.host;
-			else if ( msg.href.match(/^#/) )
-				var prefix = location.href;
-			else
-				var prefix = location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
-				
-			// deal with ../ in <a href>
-			var this_href = msg.href;
-			while ( this_href.match(/\.\.\//) ) {
-				this_href = this_href.replace(/\.\.\//, '');
-				prefix = prefix.replace(/[^\/]*\/$/, '');
-			}
+			href = this.mungeHref(msg.href);
+			var prefix = href[0];
+			var this_href = href[1];
 			
 			isb.innerHTML = '<isb_span>'+ prefix +'</isb_span>' + decodeURI(this_href);
 			
@@ -80,6 +67,25 @@ var ISBInjection = (function() {
 			isb.style.visibility = 'visible';
 			isb.style.position = 'fixed';
 			isb.style.opacity = '1';
+		},
+		mungeHref: function(href) {
+			// figure out what to do 
+			if ( href.match(/^([a-zA-Z]+:)/) )
+				var prefix = '';
+			else if ( href.match(/^\//) )
+				var prefix = location.protocol +'//'+ location.host;
+			else if ( href.match(/^#/) )
+				var prefix = location.href;
+			else
+				var prefix = location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
+				
+			// deal with ../ in <a href>
+			var this_href = href;
+			while ( this_href.match(/\.\.\//) ) {
+				this_href = this_href.replace(/\.\.\//, '');
+				prefix = prefix.replace(/[^\/]*\/$/, '');
+			}
+			return [prefix, this_href];
 		}
 		
 		

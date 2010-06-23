@@ -14,7 +14,7 @@ isb {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	-webkit-transition: opacity 250ms;
+	-webkit-transition: opacity 250ms ease-in-out;
 	text-align: left;
 }
 isb[side=right] {
@@ -34,7 +34,7 @@ isb[theme=classic] {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	font: 10px "lucida grande", arial;
+	font: 10px "lucida grande", arial !important;
 	background: #ccc;
 	-webkit-border-top-right-radius: 0.5em;
 	-webkit-border-top-left-radius: 0.5em;
@@ -56,7 +56,7 @@ isb[theme=classic] isb_span {
 
 isb[theme=safari] {
 	padding: 1px 12px !important;
-	font: 10px/13px "lucida grande";
+	font: 10px/13px "lucida grande" !important;
 	background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#aaa));
 	border-top: 1px solid rgba(255, 255, 255, 0.5);
 	outline: 1px solid rgba(0, 0, 0, 0.5) !important;
@@ -67,7 +67,7 @@ isb[theme=safari] {
 
 isb[theme=chrome] {
 	padding: 2px 4px 3px !important;
-	font: 11px/11px "lucida grande";
+	font: 11px/11px "lucida grande" !important;
 	background: #eee;
 	border: 1px solid #aaa;
 	border-bottom-width: 0;
@@ -93,7 +93,7 @@ isb[theme=dock] {
 	bottom: -2px;
 	left: -2px;
 	right: -2px;
-	font: 11px "lucida grande", arial;
+	font: 11px "lucida grande", arial !important;
 	background: rgba(0, 0, 0, 0.75);
 	border: 2px solid rgba(255, 255, 255, 0.75);
 	border-bottom-width: 0;
