@@ -58,7 +58,7 @@ isb[theme=safari] {
 	padding: 1px 12px !important;
 	font: 10px/13px "lucida grande" !important;
 	background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#aaa));
-	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	border-top: 1px solid #ccc;
 	outline: 1px solid rgba(0, 0, 0, 0.5) !important;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
