@@ -6,19 +6,24 @@ var ISBInjection = (function() {
 	
 	return {
 		init: function() {
-			// TODO: figure out how to do "live" events w/out using jQuery :D
-			$('a[href]').live('mouseover mouseout', function(e) {
-				safari.self.tab.dispatchMessage(e.type == 'mouseover' ? 'linkOver' : 'linkOff', {
-					href: this.getAttribute('href'),
-					target: this.getAttribute('target'),
-					clientX: e.clientX,
-					clientY: e.clientY,
-					altKey: e.altKey,
-					ctrlKey: e.ctrlKey,
-					metaKey: e.metaKey
-				});
-			});
-			
+			// bind "live" events
+			var types = ['mouseover', 'mouseout'];
+			for (t in types)
+				document.body.addEventListener(types[t], function(e) {
+					var el = e.target || false;
+					while ( el && el.tagName != 'A' ) el = el.parentNode;
+					if ( el && el.tagName == 'A' )
+						safari.self.tab.dispatchMessage(e.type == 'mouseover' ? 'linkOver' : 'linkOff', {
+							href: el.getAttribute('href'),
+							target: el.getAttribute('target'),
+							clientX: e.clientX,
+							clientY: e.clientY,
+							altKey: e.altKey,
+							ctrlKey: e.ctrlKey,
+							metaKey: e.metaKey
+						});
+				}, true);
+				
 			// bind message listener
 			safari.self.addEventListener("message", function(msg) {
 				ISBInjection[msg.name](msg.message);
