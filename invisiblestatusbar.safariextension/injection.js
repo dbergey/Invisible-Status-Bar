@@ -2,6 +2,7 @@ var ISBInjection = (function() {
 	
 	// private
 	var visibilityChangeTimeout;
+	var opacityChangeTimeout;
 	var isb; // element
 	
 	return {
@@ -31,6 +32,12 @@ var ISBInjection = (function() {
 			
 			isb = document.createElement('isb');
 			
+			// kill webkit transitions if there is flash on the page, and Flash 10.1 is installed
+			// if (document.querySelectorAll('object[type="application/futuresplash"]').length)
+			// 	for (x in navigator.plugins)
+			// 		if (navigator.plugins[x].description && navigator.plugins[x].description.indexOf('Flash 10.1') !== -1)
+			// 			isb.setAttribute('notransition', true);
+				
 			// so we don't insert inside iframes or on pages without a body (i.e. frameset, ew)
 			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
@@ -42,12 +49,16 @@ var ISBInjection = (function() {
 			// so we don't show/hide inside iframes or on pages without a body (i.e. frameset, ew)
 			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
-			isb.style.opacity = '0';
-			visibilityChangeTimeout = setTimeout(function() {
-				clearTimeout(visibilityChangeTimeout);
-				isb.style.visibility = 'hidden';
-				isb.style.position = 'absolute';
-			}, 250);
+			clearTimeout(opacityChangeTimeout);
+			opacityChangeTimeout = setTimeout(function() {
+				isb.style.opacity = '0';
+				visibilityChangeTimeout = setTimeout(function() {
+					clearTimeout(visibilityChangeTimeout);
+					isb.style.visibility = 'hidden';
+					isb.style.position = 'absolute';
+					isb.removeAttribute('visible');
+				}, 250);
+			}, 50);
 		},
 		showStatus: function(msg) {
 			
@@ -68,10 +79,14 @@ var ISBInjection = (function() {
 			isb.setAttribute('side', ( msg.clientX < (w+15) && msg.clientY > (winH - (h+15)) ) ? 'right' : 'left');
 			isb.setAttribute('theme', msg.theme);
 			
-			clearTimeout(visibilityChangeTimeout);
-			isb.style.visibility = 'visible';
-			isb.style.position = 'fixed';
-			isb.style.opacity = '1';
+			clearTimeout(opacityChangeTimeout);
+			opacityChangeTimeout = setTimeout(function() {
+				clearTimeout(visibilityChangeTimeout);
+				isb.style.visibility = 'visible';
+				isb.style.position = 'fixed';
+				isb.style.opacity = '1';
+				isb.setAttribute('visible', 'true');
+			}, 50);
 		},
 		mungeHref: function(href) {
 			// figure out what to do 
