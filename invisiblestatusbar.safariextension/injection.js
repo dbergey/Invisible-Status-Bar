@@ -33,11 +33,11 @@ var ISBInjection = (function() {
 			isb = document.createElement('isb');
 			
 			// kill webkit transitions if there is flash on the page, and Flash 10.1 is installed
-			// if (document.querySelectorAll('object[type="application/futuresplash"]').length)
-			// 	for (x in navigator.plugins)
-			// 		if (navigator.plugins[x].description && navigator.plugins[x].description.indexOf('Flash 10.1') !== -1)
-			// 			isb.setAttribute('notransition', true);
-				
+			if (document.querySelectorAll('object').length)
+				for (x in navigator.plugins)
+					if (navigator.plugins[x].description && navigator.plugins[x].description.indexOf('Flash 10.1') !== -1)
+						isb.setAttribute('notransition', true);
+			
 			// so we don't insert inside iframes or on pages without a body (i.e. frameset, ew)
 			if (window !== window.top || !document.getElementsByTagName('body').length ) return;
 			
@@ -111,4 +111,8 @@ var ISBInjection = (function() {
 		
 	};
 })();
-ISBInjection.init();
+if ( document.readyState == 'complete' )
+	ISBInjection.init();
+else window.addEventListener('load', function() {
+	ISBInjection.init();
+});

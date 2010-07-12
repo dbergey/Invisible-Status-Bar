@@ -11,9 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.19</string>
+	<string>1.20</string>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>21</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -27,13 +27,9 @@
 		</array>
 		<key>Scripts</key>
 		<dict>
-			<key>End</key>
-			<array>
-				<string>injection.js</string>
-			</array>
 			<key>Start</key>
 			<array>
-				<string>lib/jquery.min.js</string>
+				<string>injection.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>

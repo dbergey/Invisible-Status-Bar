@@ -1,4 +1,10 @@
 /* ---- Global styles ---- */
+/*object,*/
+embed {
+/*	display: none;*/
+/*	-webkit-font-smoothing: subpixel-antialiased;*/
+/*	opacity: 1.000 !important;*/
+}
 isb {
 	display: block;
 	bottom: 0;
