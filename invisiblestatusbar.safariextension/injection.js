@@ -74,7 +74,7 @@ var ISBInjection = (function() {
 			var winH = document.documentElement.clientHeight;
 			
 			isb.setAttribute('side', ( msg.clientX < (w+15) && msg.clientY > (winH - (h+15)) ) ? 'right' : 'left');
-			isb.setAttribute('theme', msg.theme);
+			isb.setAttribute('theme', msg.theme || 'classic');
 			
 			clearTimeout(opacityChangeTimeout);
 			opacityChangeTimeout = setTimeout(function() {
