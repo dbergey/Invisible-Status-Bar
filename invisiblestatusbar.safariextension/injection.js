@@ -13,7 +13,7 @@ var ISBInjection = (function() {
 				document.body.addEventListener(types[t], function(e) {
 					var el = e.target || false;
 					while ( el && el.tagName != 'A' ) el = el.parentNode;
-					if ( el && el.tagName == 'A' )
+					if ( el && el.tagName == 'A' && el.getAttribute('href') )
 						safari.self.tab.dispatchMessage(e.type == 'mouseover' ? 'linkOver' : 'linkOff', {
 							href: el.getAttribute('href'),
 							target: el.getAttribute('target'),
