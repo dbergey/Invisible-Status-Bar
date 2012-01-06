@@ -87,14 +87,17 @@ var ISBInjection = (function() {
 		},
 		mungeHref: function(href) {
 			// figure out what to do 
+                        var prefix;
 			if ( href.match(/^([a-zA-Z]+:)/) )
-				var prefix = '';
+				prefix = '';
+			else if ( href.match(/^\/\//) )
+				prefix = location.protocol +'//';
 			else if ( href.match(/^\//) )
-				var prefix = location.protocol +'//'+ location.host;
+				prefix = location.protocol +'//'+ location.host;
 			else if ( href.match(/^#/) )
-				var prefix = location.href;
+				prefix = location.href;
 			else
-				var prefix = location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
+				prefix = location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
 				
 			// deal with ../ in <a href>
 			var this_href = href;
