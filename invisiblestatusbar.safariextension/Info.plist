@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Daniel Bergey</string>
 	<key>Builder Version</key>
-	<string>7534.48.3</string>
+	<string>7534.52.7</string>
 	<key>CFBundleDisplayName</key>
 	<string>Invisible Status Bar</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.23</string>
+	<string>1.24</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>25</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
