@@ -75,6 +75,10 @@ isb[theme=safari] {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+isb[theme=safari] isb_span {
+	font: 10px/13px "lucida grande" !important;
+}
+
 /* ---- Chrome Theme ---- */
 
 isb[theme=chrome] {

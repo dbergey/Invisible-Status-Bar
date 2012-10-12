@@ -88,7 +88,7 @@ var ISBInjection = (function() {
 		mungeHref: function(href) {
 			// figure out what to do 
                         var prefix;
-			if ( href.match(/^([a-zA-Z]+:)/) )
+			if ( href.match(/^([a-zA-Z][a-zA-Z0-9+\-\.]*:)/) )
 				prefix = '';
 			else if ( href.match(/^\/\//) )
 				prefix = location.protocol +'//';
